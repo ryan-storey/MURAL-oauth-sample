@@ -1,0 +1,19 @@
+{
+  "name": "mural-oauth-sample",
+  "main": "server.js",
+  "description": "An app for authenticating with Mural",
+  "version": "0.1.1",
+  "private": true,
+  "engines": {
+    "node": "12.*"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "express": "^4.18.1",
+    "request": "^2.88.2"
+  },
+  "author": "Sarah Packowski"
+}

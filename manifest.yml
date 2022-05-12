@@ -1,0 +1,4 @@
+---
+applications:
+ - name: mural-oauth-sample
+   memory: 256MB
