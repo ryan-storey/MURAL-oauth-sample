@@ -1,15 +1,28 @@
 <html>
 
-<body style="padding: 40px; font-family: ariel, sans-serif;">
+<style>
+body
+{
+padding: 40px; 
+font-family: ariel, sans-serif;
+}
+p
+{
+font-family: courier, monospace;
+overflow-wrap: break-word;
+}
+</style>
 
-<p>Access token:</p>
-<p><tt><%= access_token %></tt></p>
+<body>
 
-<p>Refresh token:</p>
-<p><tt><%= refresh_token %></tt></p>
+<h3>Access token</h3>
+<p><%= access_token %></p>
 
-<p>Error:</p>
-<p><tt><%= error_str %></tt></p>
+<h3>Refresh token</h3>
+<p><%= refresh_token %></p>
+
+<h3>Error</h3>
+<p><%= error_str %></p>
 
 </body>
 
