@@ -54,9 +54,9 @@ g_app.get( "/oauth", function( request, response )
     
     g_mural.getAccessToken( code, function( oauth_error_str, access_token, refresh_token )
     {
-        response.cookie( "error_str",     error_str,     { httpOnly: true, maxAge: ( 2 * 60 * 60 * 1000 ) } );
-        response.cookie( "access_token",  access_token,  { httpOnly: true, maxAge: ( 2 * 60 * 60 * 1000 ) } );
-        response.cookie( "refresh_token", refresh_token, { httpOnly: true, maxAge: ( 2 * 60 * 60 * 1000 ) } );
+        response.cookie( "error_str",     oauth_error_str, { httpOnly: true, maxAge: ( 2 * 60 * 60 * 1000 ) } );
+        response.cookie( "access_token",  access_token,    { httpOnly: true, maxAge: ( 2 * 60 * 60 * 1000 ) } );
+        response.cookie( "refresh_token", refresh_token,   { httpOnly: true, maxAge: ( 2 * 60 * 60 * 1000 ) } );
         
         response.redirect( "./" );
         
