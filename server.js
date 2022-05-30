@@ -37,9 +37,9 @@ g_app.get( '/', function( request, response )
         return;
     }
     
-    response.render( "pages/apikey", { "access_token"  : access_token,
-                                       "refresh_token" : refresh_token,
-                                       "error_str"     : error_str } );
+    response.render( "pages/main", { "access_token"  : access_token,
+                                     "refresh_token" : refresh_token,
+                                     "error_str"     : error_str } );
     
 } );
 
