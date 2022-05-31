@@ -1,5 +1,5 @@
 {
-  "name": "mural-oauth-sample",
+  "name": <your-app-name-here>,
   "main": "server.js",
   "description": "An app for authenticating with Mural",
   "version": "0.1.1",
