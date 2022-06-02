@@ -1,4 +1,4 @@
-# MURAL OAuth 20.0 Simple Sample
+# MURAL OAuth 2.0 Simple Sample
 
 Sample Node.js web app going through MURAL's OAuth 2.0 procedure.
 
