@@ -13,7 +13,7 @@ exports.oauth = function( response )
     
     // https://developers.mural.co/public/docs/oauth#authenticate-users-authorization-request
 
-    var oauthURL = process.env.MURALOAUTHURL +
+    var oauthURL = "https://app.mural.co/api/public/v1/authorization/oauth2" +
                    "?client_id="    + process.env.MURALCLIENTID +
                    "&redirect_uri=" + process.env.MURALREDIRECT +
                    "&scope=murals:read murals:write" +
@@ -34,7 +34,7 @@ exports.getAccessToken = function( code, callback )
 
     // https://developers.mural.co/public/docs/oauth#authenticate-users-access-token-request
     
-    var tokenURL = process.env.MURALOAUTHURL + "/token";
+    var tokenURL = "https://app.mural.co/api/public/v1/authorization/oauth2/token";
     
     var options = { method  : "POST",
                     url     : tokenURL,
