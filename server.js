@@ -50,7 +50,22 @@ g_app.get( "/oauth", function( request, response )
     //console.log( "[server] /oauth query:\n"   + JSON.stringify( request.query,   null, 3 ) );
     //console.log( "[server] /oauth cookies:\n" + JSON.stringify( request.cookies, null, 3 ) );
     
-    var code = request ? ( request.query ? ( request.query.code ? request.query.code : "" ) : "" ) : "";
+    var error = request ? ( request.query ? ( request.query.error ? request.query.error : "" ) : "" ) : "";
+    var code  = request ? ( request.query ? ( request.query.code  ? request.query.code  : "" ) : "" ) : "";
+    
+    if( error )
+    {
+        response.cookie( "error_str",  "Error from MURAL: " + error, { httpOnly: true, maxAge: ( 2 * 60 * 60 * 1000 ) } );
+        
+        response.redirect( "./" );
+    }
+    
+    if( !code )
+    {
+        response.cookie( "error_str",  "No OAuth code returned from MURAL", { httpOnly: true, maxAge: ( 2 * 60 * 60 * 1000 ) } );
+        
+        response.redirect( "./" );
+    }
     
     g_mural.getAccessToken( code, function( oauth_error_str, access_token, refresh_token )
     {

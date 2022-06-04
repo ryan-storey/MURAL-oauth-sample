@@ -86,6 +86,20 @@ exports.getAccessToken = function( code, callback )
             return;
         }
         
+        if( "error" in body_json )
+        {
+            var msg = "Error getting access token: " + body_json["error"];
+            
+            if( "error_description" in body_json )
+            {
+                msg += "\n" + body_json["error_description"];
+            }
+            
+            console.log( func_name + ": " + msg );
+            callback( msg, "", "" );
+            return;
+        }
+        
         if( !( "access_token" in body_json ) || ( "undefined" === typeof body_json["access_token"] ) )
         {
             var msg = "access_token not found in response body";
