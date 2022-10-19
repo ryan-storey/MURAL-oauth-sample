@@ -22,7 +22,11 @@ overflow-wrap: break-word;
 <p><%= refresh_token %></p>
 
 <h3>Error</h3>
-<p><%= error_str %></p>
+<% if(error_str) { %>
+    <p><%= error_str %></p>
+<% } else { %>
+    <p>(no error!)</p>
+<% } %>
 
 </body>
 
