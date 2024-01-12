@@ -3,8 +3,8 @@ const g_request = require( "request" );
 
 
 var exports = module.exports = {};
-var client_id = "<INSERT CLIENT ID HERE>"
-var client_secret = "<INSERT CLIENT SECRET HERE>"
+var client_id = "24789172-6c1e-4cb6-ae0c-ae1dd87c613e"
+var client_secret = "23de28cf54079f9bb1feb89272c4679b7eddfd025d0febdb98b367dd9a2571f49beff4ca80fccf319304296342af5a34bf9658f7d6eaa6ff9967a08066356a62"
 var redirect_uri = "http://localhost:8080/oauth"
 
 

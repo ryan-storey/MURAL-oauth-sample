@@ -7,6 +7,7 @@ Follow these instructions and name your app 'genie-test'.
 Copy the client id and secret into the two variables on lines 6 and 7 of my_mural.js
 
 Copy the value of the redirect_uri variable of line 8 (should be 'http://localhost:8080/oauth') into the 'Redirect URLs' field under the OAuth section.
+Set ALL the permissions to checked (including the write ones).
 
 Click save.
 
