@@ -1,18 +1,17 @@
 # MURAL OAuth 2.0 Simple Sample
 
-Sample Node.js web app going through MURAL's OAuth 2.0 procedure.
+Set up for Genie instructions:
+https://developers.mural.co/public/docs/register-your-app
 
-The MURAL docs have an excellent explanation: [MURAL API (BETA) Authentication](https://developers.mural.co/public/docs/oauth)
+Follow these instructions and name your app 'genie-test'.
+Copy the client id and secret into the two variables on lines 6 and 7 of my_mural.js
 
-And the MURAL team has built their own demo OAuth app: [MURAL OAuth2 Server](https://github.com/muralco/api-oauth)
+Copy the value of the redirect_uri variable of line 8 (should be 'http://localhost:8080/oauth') into the 'Redirect URLs' field under the OAuth section.
 
-But if this happens to be the first time you've worked through OAuth 2.0, you can download the simpler app here, walk through the code, copy and update it for your use, and learn in the process.  This simpler app doesn't get into refreshing tokens, it focuses only on getting through the authorization redirects to get a token.
+Click save.
 
-See: 
-- [Blog post](https://sarah-packowski.medium.com/mural-and-oauth-2-0-easy-as-1-2-3-12de5d5fd324)
-- [High-level overview video](https://youtu.be/2NXLBDkrGl4)
-- [Explainer walk-though of sample app](https://youtu.be/gV7VlyRfx9k)
+In your terminal run 'node server.js' under this directory. You might need to run 'npm install express'.
 
-<img src="https://miro.medium.com/max/1400/1*mmLwpI40DnpHOkg0UqhGwg.png" alt="OAuth 2.0 flow" width="90%" />
+In your browser, go to 'http:localhost:8080'. It should redirect you to mural. Authorize, and you should see two tokens, an Access Token, and a Refresh Token. We can automate this with curl.
 
 <p>&nbsp;</p>

@@ -3,44 +3,34 @@ const g_request = require( "request" );
 
 
 var exports = module.exports = {};
+var client_id = "<INSERT CLIENT ID HERE>"
+var client_secret = "<INSERT CLIENT SECRET HERE>"
+var redirect_uri = "http://localhost:8080/oauth"
 
 
 exports.oauth = function( response )
 {
-    var func_name = "my_mural.oauth";
-    
-    console.log( func_name + " ..." );
-    
-    // https://developers.mural.co/public/docs/oauth#authenticate-users-authorization-request
-
     var oauthURL = "https://app.mural.co/api/public/v1/authorization/oauth2" +
-                   "?client_id="    + process.env.MURALCLIENTID +
-                   "&redirect_uri=" + process.env.MURALREDIRECT +
+                   "?client_id="    + client_id +
+                   "&redirect_uri=" + redirect_uri +
                    "&scope=murals:read murals:write" +
                    "&response_type=code";
     
     console.log( func_name + " redirecting to:\n" + oauthURL );
     
-    response.redirect( oauthURL );
-        
+    response.redirect( oauthURL );       
 }
 
 
 exports.getAccessToken = function( code, callback )
 {
-    var func_name = "my_mural.getAccessToken";
-    
-    console.log( func_name + " ..." );
-
-    // https://developers.mural.co/public/docs/oauth#authenticate-users-access-token-request
-    
     var tokenURL = "https://app.mural.co/api/public/v1/authorization/oauth2/token";
     
     var options = { method  : "POST",
                     url     : tokenURL,
-                    form    : { "client_id"     : process.env.MURALCLIENTID, 
-                                "client_secret" : process.env.MURALCLIENTSECRET, 
-                                "redirect_uri"  : process.env.MURALREDIRECT,
+                    form    : { "client_id"     : client_id, 
+                                "client_secret" : client_secret, 
+                                "redirect_uri"  : redirect_uri,
                                 "code"          : code,
                                 "grant_type"    : "authorization_code"
                               }
@@ -48,15 +38,9 @@ exports.getAccessToken = function( code, callback )
     
     g_request( options, function( error, response, body )
     {
-        //console.log( func_name + ": options:\n" + JSON.stringify( options, null, 3 ) );
-        //console.log( func_name + ": error:\n" + error );
-        //console.log( func_name + ": body:\n" + body );
-        //console.log( func_name + ": response:\n" + JSON.stringify( response, null, 3 ) );
-
         if( error )
         {
             var msg = "Request failed:\n" + error.message;
-            console.log( func_name + msg );
             callback( msg, "", "" );
             return;
         }
@@ -81,7 +65,6 @@ exports.getAccessToken = function( code, callback )
                 msg += e.stack + "\nbody:\n" + body;
             }
             
-            console.log( func_name + ": " + msg );
             callback( msg, "", "" );
             return;
         }
@@ -95,7 +78,6 @@ exports.getAccessToken = function( code, callback )
                 msg += "\n" + body_json["error_description"];
             }
             
-            console.log( func_name + ": " + msg );
             callback( msg, "", "" );
             return;
         }
@@ -103,7 +85,6 @@ exports.getAccessToken = function( code, callback )
         if( !( "access_token" in body_json ) || ( "undefined" === typeof body_json["access_token"] ) )
         {
             var msg = "access_token not found in response body";
-            console.log( func_name + ": " + msg );
             callback( msg, "", "" );
             return;
         }
@@ -111,7 +92,6 @@ exports.getAccessToken = function( code, callback )
         if( !( "refresh_token" in body_json ) || ( "undefined" === typeof body_json["refresh_token"] ) )
         {
             var msg = "refresh_token not found in response body";
-            console.log( func_name + ": " + msg );
             callback( msg, "", "" );
             return;
         }
