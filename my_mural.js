@@ -16,8 +16,6 @@ exports.oauth = function( response )
                    "&scope=murals:read murals:write" +
                    "&response_type=code";
     
-    console.log( func_name + " redirecting to:\n" + oauthURL );
-    
     response.redirect( oauthURL );       
 }
 
